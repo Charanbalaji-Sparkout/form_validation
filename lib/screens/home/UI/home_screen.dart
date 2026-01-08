@@ -91,50 +91,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Checkbox(
-                        value: _checkboxValue,
-                        onChanged: (val) {
-                          setState(() {
-                            _checkboxValue = val ?? false;
-                          });
-                        },
-                      ),
+                      child: Checkbox(value: _checkboxValue, onChanged: (val) {
+                        setState(() {
+                          _checkboxValue = val ?? false;
+                        });
+                      }),
                     ),
-                    Text("I agree to the Terms and Conditions"),
+                    Text("I agree to the Terms and Conditions")
                   ],
                 ),
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        if (_checkboxValue){
                         if (_formkey.currentState!.validate()) {
                           _formkey.currentState!.save();
-                          if (email != null &&
-                              password != null &&
-                              phone != null) {
+                          if (email != null && password != null && phone != null) {
                             _showDetails = !_showDetails;
                           }
-                        }}
+                        }
                       });
                     },
                     child: Text('Register'),
                   ),
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 40,),
                 if (_showDetails &&
                     email != null &&
                     password != null &&
                     phone != null) ...[
-                  Center(
-                    child: Column(
-                      children: [
-                        Text("Your email is ${email ?? ''}", key: _datakey),
-                        Text("Your number is ${phone ?? ''}"),
-                        Text("Your password is ${password ?? ''}"),
-                      ],
-                    ),
-                  ),
+                  Text("Your email is ${email ?? ''}",key: _datakey,),
+                  Text("Your number is ${phone ?? ''}"),
+                  Text("Your password is ${password ?? ''}"),
                 ],
               ],
             ),
