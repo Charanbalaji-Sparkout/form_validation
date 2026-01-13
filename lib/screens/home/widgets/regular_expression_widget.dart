@@ -3,6 +3,7 @@ extension RegularExpressionWidget on String{
     final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     return emailRegExp.hasMatch(this);
   }
+
   bool get isValidPhone{
     final phoneRegExp = RegExp(r"^\+?[0-9]{9}$");
     return phoneRegExp.hasMatch(this);

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:form_validation/screens/home/widgets/custom_form_widget.dart';
 import 'package:form_validation/screens/home/widgets/regular_expression_widget.dart';
 
-// ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -12,10 +11,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _formkey = GlobalKey<FormState>();
-  final _datakey = GlobalKey<FormState>();
   bool _showDetails = false;
   bool _checkboxValue = false;
-
   String? email, password, phone;
 
   @override
@@ -38,9 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomFormWidget(
+                  controller: TextEditingController(),
                   validator: (val) {
                     if (!val!.isValidEmail) {
-                      return 'Enter a Valid Email';
+                      return 'Enter a Valid Email';   
                     }
                     return null;
                   },
@@ -52,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   imgUrl:
                       'https://i.pinimg.com/736x/dd/93/ad/dd93ad32b1b9192ced8b8fb02b61e076.jpg',
                   labelText: 'Email',
+                  
                 ),
                 CustomFormWidget(
                   obsecureText: false,
@@ -120,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     email != null &&
                     password != null &&
                     phone != null) ...[
-                  Text("Your email is ${email ?? ''}",key: _datakey,),
+                  Text("Your email is ${email ?? ''}"),
                   Text("Your number is ${phone ?? ''}"),
                   Text("Your password is ${password ?? ''}"),
                 ],

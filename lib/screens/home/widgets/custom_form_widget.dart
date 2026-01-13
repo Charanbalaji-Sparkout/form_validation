@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 class CustomFormWidget extends StatefulWidget {
   final bool obsecureText;
   final String labelText;
-  final String? Function(String?) validator;
+  final String? Function(String?)? validator;
   final Function(String?) onSaved;
   final String imgUrl;
-  final FocusNode? focusNode;
   final TextInputAction textInputAction;
   final void Function(String)? onFieldSubmitted;
   final TextEditingController? controller;
@@ -14,14 +13,13 @@ class CustomFormWidget extends StatefulWidget {
   const CustomFormWidget({
     super.key,
     this.obsecureText = false,
-    required this.validator,
     required this.onSaved,
     required this.imgUrl,
     required this.labelText,
-    this.focusNode,
     this.textInputAction = TextInputAction.next,
     this.onFieldSubmitted,
     this.controller,
+    this.validator,
   });
 
   @override
@@ -56,10 +54,9 @@ class _CustomFormWidgetState extends State<CustomFormWidget> {
               child: TextFormField(
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 obscureText: _isObscured,
-                  controller: widget.controller,
-                  focusNode: widget.focusNode,
-                  textInputAction: widget.textInputAction,
-                  onFieldSubmitted: widget.onFieldSubmitted,
+                controller: widget.controller,
+                textInputAction: widget.textInputAction,
+                onFieldSubmitted: widget.onFieldSubmitted,
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
